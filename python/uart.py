@@ -1,17 +1,9 @@
-import time
 import serial
 
-ser = serial.Serial(port = '/dev/ttyAMA0',
-                    baudrate = 9600,
-                    timeout = 1)
+def uart(data):
 
-while True:
-    data = input("입력 : ")
+    ser = serial.Serial(port = '/dev/ttyAMA1',
+                        baudrate = 9600,
+                        timeout = 1)
 
-    print(ser.write(data.encode('utf-8')))
-    print(ser.readall())
-    
-    if (data == 'q'):
-        break
-
-    time.sleep(2)
+    ser.write(data.encode('utf-8'))
